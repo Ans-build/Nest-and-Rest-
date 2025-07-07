@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nest & Rest - Science-Based Sleep for Moms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #1f1f1f 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Page Navigation */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .page.hidden {
+            display: none;
+        }
+
+        /* Page 1 - Introduction */
+        .page-1 {
+            text-align: center;
+        }
+
+        .credential {
+            color: #4a9e6f;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .intro-text {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c5c5c5;
+            background: rgba(30, 30, 30, 0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .challenge-question {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        .continue-btn {
+            background: transparent;
+            border: 2px solid #4a9e6f;
+            color: #4a9e6f;
+            padding: 15px 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .continue-btn:hover {
+            background: #4a9e6f;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* Page 2 - Sleep Challenges */
+        .page-2 {
+            padding: 60px 0;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #4a9e6f;
+        }
+
+        .challenge-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .challenge-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .challenge-card {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card:hover {
+            border-color: #4a9e6f;
+            transform: translateY(-5px);
+        }
+
+        .challenge-card.selected {
+            border-color: #4a9e6f;
+            background: #2a3a2a;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .challenge-card p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #4a9e6f;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-card:hover::before,
+        .challenge-card.selected::before {
+            transform: scaleX(1);
+        }
+
+        .challenge-card.other-card {
+            position: relative;
+        }
+
+        .other-input {
+            width: 100%;
+            min-height: 60px;
+            margin-top: 1rem;
+            padding: 12px;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            font-family: inherit;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .other-input:focus {
+            border-color: #4a9e6f;
+        }
+
+        .other-input::placeholder {
+            color: #666;
+        }
+        .continue-email-btn {
+            background: #4a9e6f;
+            color: #1a1a1a;
+            padding: 15px 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border: none;
+            margin: 2rem auto;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .continue-email-btn.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .continue-email-btn:hover {
+            background: #3a8e5f;
+            transform: translateY(-2px);
+        }
+        .email-section {
+            background: #2a2a2a;
+            border: 1px solid #333;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .email-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .email-section h3 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .email-section p {
+            color: #888;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 15px;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            border-color: #4a9e6f;
+        }
+
+        .email-input::placeholder {
+            color: #666;
+        }
+
+        .submit-btn {
+            background: #4a9e6f;
+            color: #1a1a1a;
+            padding: 15px 25px;
+            border: none;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .submit-btn:hover {
+            background: #3a8e5f;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #1a4a2a;
+            border: 1px solid #4a9e6f;
+            color: #6fff6f;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Selection Counter */
+        .selection-counter {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .challenge-title {
+                font-size: 2rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .back-btn {
+                top: 20px;
+                left: 20px;
+            }
+
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .challenge-card {
+                padding: 1.5rem;
+            }
+
+            .email-section {
+                padding: 2rem;
+            }
+        }
+
+        /* Smooth animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-1 > * {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .page-1 > *:nth-child(1) { animation-delay: 0.1s; }
+        .page-1 > *:nth-child(2) { animation-delay: 0.2s; }
+        .page-1 > *:nth-child(3) { animation-delay: 0.3s; }
+        .page-1 > *:nth-child(4) { animation-delay: 0.4s; }
+        .page-1 > *:nth-child(5) { animation-delay: 0.5s; }
+        .page-1 > *:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Introduction -->
+    <div class="page page-1" id="page1">
+        <div class="container">
+            <div class="credential">Developed by Board-Certified Physician</div>
+            
+            <h1 class="main-title">Nest & Rest</h1>
+            
+            <p class="subtitle">The Science-Based Sleep Blueprint for Pregnant Women & New Mothers</p>
+            
+            <div class="intro-text">
+                <p>Hi, I'm a board-certified physician, and I'm creating Nest & Rest — a science-backed sleep guide designed to help pregnant women and new moms finally get the deep, restorative sleep they deserve.</p>
+                
+                <p>Whether you're expecting or adjusting to life with a newborn, sleep can feel impossible. That's why I'm building this course with you, not just for you.</p>
+                
+                <p class="cta-text">Before I finalize the content, I'd love your input on what would be most valuable to you.</p>
+            </div>
+            
+            <h2 class="challenge-question">What's your biggest sleep challenge?</h2>
+            
+            <button class="continue-btn" onclick="goToPage2()">Share Your Challenge</button>
+        </div>
+    </div>
+
+    <!-- Page 2: Sleep Challenges & Email Capture -->
+    <div class="page page-2 hidden" id="page2">
+        <button class="back-btn" onclick="goToPage1()">← Back</button>
+        
+        <div class="container">
+            <div class="challenge-header">
+                <h2 class="challenge-title">Select Your Biggest Sleep Challenges</h2>
+                <p class="challenge-subtitle">Choose all that apply - this helps me create the most relevant content for you</p>
+            </div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card" onclick="selectChallenge(this)">
+                    <h3>Racing Mind at Bedtime</h3>
+                    <p>Your mind races with worries about labor, parenting, finances, or baby's health the moment your head hits the pillow</p>
+                </div>
+                
+                <div class="challenge-card" onclick="selectChallenge(this)">
+                    <h3>Frequent Night Wakings</h3>
+                    <p>You wake up multiple times during the night due to bathroom trips, baby movements, or discomfort, then struggle to fall back asleep</p>
+                </div>
+                
+                <div class="challenge-card" onclick="selectChallenge(this)">
+                    <h3>Physical Discomfort Disrupting Sleep</h3>
+                    <p>Back pain, heartburn, restless legs, or frequent bathroom trips make finding a comfortable sleeping position nearly impossible</p>
+                </div>
+                
+                <div class="challenge-card" onclick="selectChallenge(this)">
+                    <h3>Unable to Sleep Even When Baby Sleeps</h3>
+                    <p>You're exhausted but can't fall asleep during baby's naps or when your partner takes night duty - your brain won't 'turn off'</p>
+                </div>
+                
+                <div class="challenge-card" onclick="selectChallenge(this)">
+                    <h3>Postpartum Anxiety Keeping You Awake</h3>
+                    <p>Constant worry about baby's breathing, feeding, or safety keeps you checking on them instead of sleeping</p>
+                </div>
+                
+                <div class="challenge-card" onclick="selectChallenge(this)">
+                    <h3>Never Feeling Rested Despite Sleep</h3>
+                    <p>Even when you get hours of sleep, you wake up feeling exhausted, foggy, and like you never truly rested</p>
+                </div>
+                
+                <div class="challenge-card other-card" onclick="selectChallenge(this)">
+                    <h3>Other Sleep Challenge</h3>
+                    <p>I have a different sleep challenge not listed above</p>
+                    <textarea class="other-input" id="otherInput" placeholder="Please describe your specific sleep challenge... (optional)" onclick="event.stopPropagation()" oninput="autoSelectOther()"></textarea>
+                </div>
+            </div>
+
+            <div class="selection-counter" id="selectionCounter">
+                Select at least one challenge to continue
+            </div>
+
+            <button class="continue-email-btn" id="continueEmailBtn" onclick="showEmailForm()">Continue to Get My Guide</button>
+
+            <div class="email-section" id="emailSection">
+                <h3>Get Your Personalized Sleep Guide</h3>
+                <p>I'll send you a free mini-guide with science-backed solutions for your specific challenges, plus early access to Nest & Rest when it launches.</p>
+                
+                <form class="email-form" id="emailForm">
+                    <input type="text" class="email-input" id="nameInput" placeholder="First name" required>
+                    <input type="email" class="email-input" id="emailInput" placeholder="Enter your email address" required>
+                    <button type="submit" class="submit-btn" id="submitBtn">Get My Guide</button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    ✓ Success! Check your email for your personalized sleep guide and early access details.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedChallenges = [];
+        let currentPage = 1;
+
+        // Page Navigation
+        function goToPage1() {
+            document.getElementById('page1').classList.remove('hidden');
+            document.getElementById('page2').classList.add('hidden');
+            currentPage = 1;
+        }
+
+        function goToPage2() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+            currentPage = 2;
+            
+            // Track page view
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    page_title: 'Sleep Challenges',
+                    page_location: window.location.href + '#challenges'
+                });
+            }
+        }
+
+        // Auto-select "Other" card when user starts typing
+        function autoSelectOther() {
+            const otherCard = document.querySelector('.other-card');
+            const otherText = document.getElementById('otherInput').value.trim();
+            
+            if (otherText.length > 0 && !otherCard.classList.contains('selected')) {
+                // Auto-select the "Other" card when user starts typing
+                selectChallenge(otherCard);
+            } else if (otherText.length === 0 && otherCard.classList.contains('selected')) {
+                // Auto-deselect if they clear the text
+                selectChallenge(otherCard);
+            }
+        }
+
+        // Challenge Selection
+        function selectChallenge(card) {
+            const challengeText = card.querySelector('h3').textContent;
+            
+            if (card.classList.contains('selected')) {
+                // Deselect
+                card.classList.remove('selected');
+                selectedChallenges = selectedChallenges.filter(c => c !== challengeText);
+            } else {
+                // Select
+                card.classList.add('selected');
+                selectedChallenges.push(challengeText);
+            }
+            
+            updateSelectionCounter();
+            
+            // Show continue button if at least one challenge is selected
+            if (selectedChallenges.length > 0) {
+                document.getElementById('continueEmailBtn').classList.add('visible');
+            } else {
+                document.getElementById('continueEmailBtn').classList.remove('visible');
+                document.getElementById('emailSection').classList.remove('visible');
+            }
+
+            // Track challenge selection
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'challenge_selected', {
+                    event_category: 'engagement',
+                    event_label: challengeText,
+                    value: selectedChallenges.length
+                });
+            }
+        }
+
+        function updateSelectionCounter() {
+            const counter = document.getElementById('selectionCounter');
+            if (selectedChallenges.length === 0) {
+                counter.textContent = 'Select at least one challenge to continue';
+                counter.style.color = '#888';
+            } else if (selectedChallenges.length === 1) {
+                counter.textContent = '1 challenge selected';
+                counter.style.color = '#4a9e6f';
+            } else {
+                counter.textContent = `${selectedChallenges.length} challenges selected`;
+                counter.style.color = '#4a9e6f';
+            }
+        }
+
+        // Show Email Form
+        function showEmailForm() {
+            document.getElementById('emailSection').classList.add('visible');
+            document.getElementById('emailSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Email Form Submission
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Disable button during submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Simulate API call (replace with your actual email service)
+            setTimeout(() => {
+                // Here you would send the data to your backend
+                const otherChallenge = document.getElementById('otherInput').value;
+                const submissionData = {
+                    name: name,
+                    email: email,
+                    challenges: selectedChallenges,
+                    otherChallenge: otherChallenge || null,
+                    timestamp: new Date().toISOString(),
+                    source: 'landing_page'
+                };
+                
+                console.log('Form submitted:', submissionData);
+                
+                // Show success message
+                document.getElementById('successMessage').classList.add('show');
+                document.getElementById('emailForm').style.display = 'none';
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                        value: 1.0,
+                        currency: 'USD',
+                        event_category: 'lead_generation',
+                        event_label: 'email_signup'
+                    });
+                }
+                
+                // Reset form
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Get My Guide';
+                
+            }, 1500);
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && currentPage === 1) {
+                goToPage2();
+            } else if (e.key === 'Escape' && currentPage === 2) {
+                goToPage1();
+            }
+        });
+
+        // Track time spent on page
+        let startTime = Date.now();
+        window.addEventListener('beforeunload', function() {
+            const timeSpent = Math.round((Date.now() - startTime) / 1000);
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'timing_complete', {
+                    name: 'page_view_time',
+                    value: timeSpent
+                });
+            }
+        });
+    </script>
+</body>
+</html>
