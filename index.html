@@ -539,11 +539,9 @@
                 <h3>Get Your FREE Personalized Sleep Guide</h3>
                 <p>I'll send you a free mini-guide with science-backed solutions for your specific challenges, plus early access to FULL Nest & Rest when it launches.</p>
                 
-                <form class="email-form" id="emailForm">
-                    <input type="text" class="email-input" id="nameInput" placeholder="First name" required>
-                    <input type="email" class="email-input" id="emailInput" placeholder="Enter your email address" required>
-                    <button type="submit" class="submit-btn" id="submitBtn">Get My Guide</button>
-                </form>
+                <div style="max-width: 400px; margin: 0 auto;">
+                    <script async data-uid="c44f4f674d" src="https://nestandrest.kit.com/c44f4f674d/index.js"></script>
+                </div>
                 
                 <div class="success-message" id="successMessage">
                     ✓ Success! Check your email for your personalized sleep guide and early access details.
@@ -648,53 +646,19 @@
             });
         }
 
-        // Email Form Submission
-        document.getElementById('emailForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('nameInput').value;
-            const email = document.getElementById('emailInput').value;
-            const submitBtn = document.getElementById('submitBtn');
-            
-            // Disable button during submission
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            // Simulate API call (replace with your actual email service)
-            setTimeout(() => {
-                // Here you would send the data to your backend
-                const otherChallenge = document.getElementById('otherInput').value;
-                const submissionData = {
-                    name: name,
-                    email: email,
-                    challenges: selectedChallenges,
-                    otherChallenge: otherChallenge || null,
-                    timestamp: new Date().toISOString(),
-                    source: 'landing_page'
-                };
-                
-                console.log('Form submitted:', submissionData);
-                
-                // Show success message
-                document.getElementById('successMessage').classList.add('show');
-                document.getElementById('emailForm').style.display = 'none';
-                
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'conversion', {
-                        send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL',
-                        value: 1.0,
-                        currency: 'USD',
-                        event_category: 'lead_generation',
-                        event_label: 'email_signup'
-                    });
-                }
-                
-                // Reset form
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Get My Guide';
-                
-            }, 1500);
+        // Email Form Submission - Updated for ConvertKit
+        // ConvertKit handles form submission automatically
+        // Keeping success message functionality for potential custom use
+        
+        function showSuccessMessage() {
+            document.getElementById('successMessage').classList.add('show');
+        }
+
+        // Optional: Listen for ConvertKit success events
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'kit-form-success') {
+                showSuccessMessage();
+            }
         });
 
         // Keyboard Navigation
