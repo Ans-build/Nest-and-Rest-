@@ -105,9 +105,8 @@
         }
 
         .continue-btn {
-            background: transparent;
-            border: 2px solid #4a9e6f;
-            color: #4a9e6f;
+            background: #4a9e6f;
+            color: #1a1a1a;
             padding: 18px 45px;
             font-size: 1.1rem;
             cursor: pointer;
@@ -115,11 +114,12 @@
             font-weight: 500;
             letter-spacing: 0.5px;
             min-height: 58px;
+            border: 2px solid #4a9e6f;
         }
 
         .continue-btn:hover {
-            background: #4a9e6f;
-            color: #1a1a1a;
+            background: #3a8e5f;
+            border-color: #3a8e5f;
             transform: translateY(-2px);
         }
 
@@ -255,12 +255,18 @@
             transition: all 0.3s ease;
             font-weight: 500;
             letter-spacing: 0.5px;
-            border: none;
+            border: 2px solid #4a9e6f;
             margin: 2rem auto;
             display: none;
             opacity: 0;
             transform: translateY(20px);
             min-height: 58px;
+        }
+
+        .continue-email-btn:hover {
+            background: #3a8e5f;
+            border-color: #3a8e5f;
+            transform: translateY(-2px);
         }
 
         .continue-email-btn.visible {
