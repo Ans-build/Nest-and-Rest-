@@ -108,12 +108,13 @@
             background: transparent;
             border: 2px solid #4a9e6f;
             color: #4a9e6f;
-            padding: 15px 40px;
-            font-size: 1rem;
+            padding: 18px 45px;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
             letter-spacing: 0.5px;
+            min-height: 58px;
         }
 
         .continue-btn:hover {
@@ -248,8 +249,8 @@
         .continue-email-btn {
             background: #4a9e6f;
             color: #1a1a1a;
-            padding: 15px 40px;
-            font-size: 1rem;
+            padding: 18px 45px;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
@@ -259,6 +260,7 @@
             display: none;
             opacity: 0;
             transform: translateY(20px);
+            min-height: 58px;
         }
 
         .continue-email-btn.visible {
@@ -330,13 +332,14 @@
         .submit-btn {
             background: #4a9e6f;
             color: #1a1a1a;
-            padding: 15px 25px;
+            padding: 18px 30px;
             border: none;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
+            min-height: 58px;
         }
 
         .submit-btn:hover {
@@ -452,12 +455,14 @@
                 
                 <p>Whether you're expecting or adjusting to life with a newborn, sleep can feel impossible. That's why I'm building this course with you, not just for you.</p>
                 
+                <p>Backed by 50+ scientific studies, this comprehensive approach gives you proven strategies to significantly improve your sleep quality and wake up feeling more rested.</p>
+                
                 <p class="cta-text">Before I finalize the content, I'd love your input on what would be most valuable to you.</p>
             </div>
             
             <h2 class="challenge-question">What's your biggest sleep challenge?</h2>
             
-            <button class="continue-btn" onclick="goToPage2()">Share Your Challenge</button>
+            <button class="continue-btn" onclick="goToPage2()">Discover My Sleep Solution</button>
         </div>
     </div>
 
@@ -474,32 +479,32 @@
             <div class="challenges-grid">
                 <div class="challenge-card" onclick="selectChallenge(this)">
                     <h3>Racing Mind at Bedtime</h3>
-                    <p>Your mind races with worries about labor, parenting, finances, or baby's health the moment your head hits the pillow</p>
+                    <p>Mind races with worries about baby, parenting, or health when trying to sleep</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
                     <h3>Frequent Night Wakings</h3>
-                    <p>You wake up multiple times during the night due to bathroom trips, baby movements, or discomfort, then struggle to fall back asleep</p>
+                    <p>Wake up multiple times due to bathroom trips or discomfort, struggle to fall back asleep</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
-                    <h3>Physical Discomfort Disrupting Sleep</h3>
-                    <p>Back pain, heartburn, restless legs, or frequent bathroom trips make finding a comfortable sleeping position nearly impossible</p>
+                    <h3>Physical Discomfort</h3>
+                    <p>Back pain, heartburn, or restless legs make finding comfortable sleep position impossible</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
-                    <h3>Unable to Sleep Even When Baby Sleeps</h3>
-                    <p>You're exhausted but can't fall asleep during baby's naps or when your partner takes night duty - your brain won't 'turn off'</p>
+                    <h3>Can't Sleep When Baby Sleeps</h3>
+                    <p>Exhausted but brain won't 'turn off' during naps or when partner takes night duty</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
-                    <h3>Postpartum Anxiety Keeping You Awake</h3>
-                    <p>Constant worry about baby's breathing, feeding, or safety keeps you checking on them instead of sleeping</p>
+                    <h3>Postpartum Anxiety</h3>
+                    <p>Constant worry about baby's safety keeps you checking instead of sleeping</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
-                    <h3>Never Feeling Rested Despite Sleep</h3>
-                    <p>Even when you get hours of sleep, you wake up feeling exhausted, foggy, and like you never truly rested</p>
+                    <h3>Never Feel Rested</h3>
+                    <p>Wake up exhausted and foggy even after hours of sleep</p>
                 </div>
                 
                 <div class="challenge-card other-card" onclick="selectChallenge(this)">
@@ -513,7 +518,7 @@
                 Select at least one challenge to continue
             </div>
 
-            <button class="continue-email-btn" id="continueEmailBtn" onclick="showEmailForm()">Continue to Get My Guide</button>
+            <button class="continue-email-btn" id="continueEmailBtn" onclick="showEmailForm()">Get My Customized Sleep Guide</button>
 
             <div class="email-section" id="emailSection">
                 <h3>Get Your Personalized Sleep Guide</h3>
