@@ -44,6 +44,76 @@
             text-align: center;
         }
 
+        /* Hero CTA Button */
+        .hero-cta {
+            background: linear-gradient(135deg, #4a9e6f 0%, #5bb378 100%);
+            color: #1a1a1a;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto 30px;
+            display: block;
+            box-shadow: 0 4px 15px rgba(74, 158, 111, 0.3);
+            text-decoration: none;
+            min-width: 280px;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 158, 111, 0.4);
+            background: linear-gradient(135deg, #5bb378 0%, #4a9e6f 100%);
+        }
+
+        .hero-cta-subtitle {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 40px;
+        }
+
+        /* Benefits Section */
+        .benefits-preview {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-title {
+            color: #4a9e6f;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .benefits-list {
+            display: grid;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #c0c0c0;
+        }
+
+        .benefit-icon {
+            color: #4a9e6f;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
         .credential {
             color: #4a9e6f;
             font-size: 0.9rem;
@@ -134,7 +204,7 @@
 
         /* Page 2 - Sleep Challenges */
         .page-2 {
-            padding: 60px 0;
+            padding: 100px 0 60px 0;
         }
 
         .back-btn {
@@ -193,11 +263,18 @@
         .challenge-card:hover {
             border-color: #4a9e6f;
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .challenge-card.selected {
             border-color: #4a9e6f;
             background: #2a3a2a;
+        }
+
+        .challenge-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .challenge-card h3 {
@@ -257,6 +334,7 @@
         .other-input::placeholder {
             color: #666;
         }
+
         .continue-email-btn {
             background: #4a9e6f;
             color: #1a1a1a;
@@ -287,10 +365,6 @@
             transform: translateY(0);
         }
 
-        .continue-email-btn:hover {
-            background: #3a8e5f;
-            transform: translateY(-2px);
-        }
         .email-section {
             background: #2a2a2a;
             border: 1px solid #333;
@@ -419,6 +493,61 @@
             display: none;
         }
 
+        /* Trust Signals */
+        .trust-signals {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-signal {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-text {
+            color: #4a9e6f;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .progress-step {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: #4a9e6f;
+            box-shadow: 0 0 10px rgba(74, 158, 111, 0.5);
+        }
+
         /* Selection Counter */
         .selection-counter {
             text-align: center;
@@ -505,12 +634,39 @@
             <div class="intro-text">
                 <p>Hi, I'm a board-certified physician, and I'm creating Nest & Rest — a science-backed sleep guide designed to help pregnant women and new moms finally get the deep, restorative sleep they deserve.</p>
                 
-                <p>Whether you're expecting or adjusting to life with a newborn, sleep can feel impossible. That's why I'm building this course with you, not just for you.</p>
+                <p>Whether you're expecting or adjusting to life with a newborn, sleep can feel impossible. That's why I'm building this course <em>with you</em>, not just for you.</p>
                 
                 <p>Backed by 50+ scientific studies, this comprehensive approach gives you proven strategies to significantly improve your sleep quality and wake up feeling more rested.</p>
-                
-                <p class="cta-text">Before I finalize the content, I'd love your input on what would be most valuable to you.</p>
             </div>
+
+            <!-- Hero CTA -->
+            <a href="#" class="hero-cta" onclick="goToPage2(); return false;">Start My Sleep Assessment</a>
+            <div class="hero-cta-subtitle">Takes 2 minutes • Get personalized recommendations</div>
+
+            <!-- Benefits Preview -->
+            <div class="benefits-preview">
+                <h3 class="benefits-title">Science-Based Approach Includes:</h3>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Evidence-based sleep hygiene techniques designed for pregnancy & postpartum</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Proven strategies to calm racing minds and reduce nighttime worry</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Personalized recommendations based on your specific challenges</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Bonus educational content about safe sleep supplements during pregnancy & nursing</span>
+                    </div>
+                </div>
+            </div>
+                
+            <p class="cta-text">Before I finalize the content, I'd love your input on what would be most valuable to you.</p>
             
             <h2 class="challenge-question">What's your biggest sleep challenge?</h2>
             
@@ -523,43 +679,60 @@
         <button class="back-btn" onclick="goToPage1()">← Back</button>
         
         <div class="container">
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-text">Step 2 of 3 - What's your biggest challenge?</div>
+                <div class="progress-steps">
+                    <div class="progress-step active"></div>
+                    <div class="progress-step active"></div>
+                    <div class="progress-step"></div>
+                </div>
+            </div>
+
             <div class="challenge-header">
-                <h2 class="challenge-title">Select Your Biggest Sleep Challenges</h2>
+                <h2 class="challenge-title">What's Your Biggest Sleep Challenge?</h2>
                 <p class="challenge-subtitle">Choose all that apply - this helps me create the most relevant content for you</p>
             </div>
 
             <div class="challenges-grid">
                 <div class="challenge-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">🌙</span>
                     <h3>Frequent Night Wakings</h3>
                     <p>Wake up multiple times due to bathroom trips or discomfort, struggle to fall back asleep</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">🤰</span>
                     <h3>Physical Discomfort</h3>
                     <p>Back pain, heartburn, restless legs, or baby bump make finding comfortable sleep position impossible</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">😴</span>
                     <h3>Can't Sleep When Baby Sleeps</h3>
                     <p>Exhausted but brain won't 'turn off' during naps or when partner takes night duty</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">😰</span>
                     <h3>Postpartum Anxiety</h3>
                     <p>Constant worry about baby's safety keeps you checking instead of sleeping</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">🔋</span>
                     <h3>Never Feel Rested</h3>
                     <p>Wake up exhausted and foggy even after hours of sleep</p>
                 </div>
                 
                 <div class="challenge-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">🧠</span>
                     <h3>Racing Mind at Bedtime</h3>
                     <p>Mind races with worries about baby, parenting, or health when trying to sleep</p>
                 </div>
                 
                 <div class="challenge-card other-card" onclick="selectChallenge(this)">
+                    <span class="challenge-icon">💭</span>
                     <h3>Other Sleep Challenge</h3>
                     <p>I have a different sleep challenge not listed above</p>
                     <textarea class="other-input" id="otherInput" placeholder="Please describe your specific sleep challenge... (optional)" onclick="event.stopPropagation()" oninput="autoSelectOther()"></textarea>
@@ -570,16 +743,42 @@
                 Select at least one challenge to continue
             </div>
 
-            <button class="continue-email-btn" id="continueEmailBtn" onclick="showEmailForm()">Get My FREE Customized Sleep Guide</button>
+            <button class="continue-email-btn" id="continueEmailBtn" onclick="showEmailForm()">Get My FREE Sleep Blueprint</button>
 
             <div class="email-section" id="emailSection">
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-text">Final Step - Get Your Personalized Guide</div>
+                    <div class="progress-steps">
+                        <div class="progress-step active"></div>
+                        <div class="progress-step active"></div>
+                        <div class="progress-step active"></div>
+                    </div>
+                </div>
+
                 <h3>Get Your FREE Personalized Sleep Guide</h3>
-                <p>I'll send you a free mini-guide with science-backed solutions for your specific challenges, plus early access to FULL Nest & Rest when it launches.</p>
+                <p>Based on your challenges, I'll create a personalized mini-guide with science-backed solutions designed specifically for exhausted mothers like you, plus early access to the FULL Nest & Rest program when it launches.</p>
                 
                 <div style="max-width: 400px; margin: 0 auto;">
                     <script async data-uid="c44f4f674d" src="https://nestandrest.kit.com/c44f4f674d/index.js"></script>
                     <div class="gentle-error" id="gentleError">
                         Please enter a valid email address
+                    </div>
+                </div>
+
+                <!-- Trust Signals -->
+                <div class="trust-signals">
+                    <div class="trust-signal">
+                        <span>🔒</span>
+                        <span>No spam, ever</span>
+                    </div>
+                    <div class="trust-signal">
+                        <span>📧</span>
+                        <span>Unsubscribe anytime</span>
+                    </div>
+                    <div class="trust-signal">
+                        <span>👥</span>
+                        <span>Trusted by expecting & new mothers</span>
                     </div>
                 </div>
                 
