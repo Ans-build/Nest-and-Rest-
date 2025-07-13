@@ -388,6 +388,37 @@
             display: block;
         }
 
+        /* ConvertKit Form Styling Overrides */
+        .formkit-form .formkit-alert {
+            display: none !important;
+        }
+
+        .formkit-form .formkit-alert-error {
+            display: none !important;
+        }
+
+        .formkit-form .formkit-field.invalid input {
+            border-color: #f59e0b !important;
+            background-color: rgba(245, 158, 11, 0.1) !important;
+        }
+
+        .formkit-form .formkit-field.invalid input::placeholder {
+            color: #f59e0b !important;
+        }
+
+        /* Custom gentle error message */
+        .gentle-error {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid #f59e0b;
+            color: #f59e0b;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
         /* Selection Counter */
         .selection-counter {
             text-align: center;
@@ -547,6 +578,9 @@
                 
                 <div style="max-width: 400px; margin: 0 auto;">
                     <script async data-uid="c44f4f674d" src="https://nestandrest.kit.com/c44f4f674d/index.js"></script>
+                    <div class="gentle-error" id="gentleError">
+                        Please enter a valid email address
+                    </div>
                 </div>
                 
                 <div class="success-message" id="successMessage">
@@ -665,6 +699,56 @@
             if (event.data && event.data.type === 'kit-form-success') {
                 showSuccessMessage();
             }
+        });
+
+        // Handle ConvertKit form validation with gentle messaging
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for ConvertKit form to load
+            setTimeout(function() {
+                const form = document.querySelector('.formkit-form');
+                if (form) {
+                    const emailInput = form.querySelector('input[type="email"]');
+                    const gentleError = document.getElementById('gentleError');
+                    
+                    if (emailInput && gentleError) {
+                        // Hide ConvertKit's default error messages
+                        const observer = new MutationObserver(function(mutations) {
+                            mutations.forEach(function(mutation) {
+                                // Hide any ConvertKit error alerts
+                                const alerts = form.querySelectorAll('.formkit-alert, .formkit-alert-error');
+                                alerts.forEach(alert => {
+                                    alert.style.display = 'none';
+                                });
+                                
+                                // Show gentle error if field is invalid
+                                if (emailInput.classList.contains('invalid')) {
+                                    gentleError.style.display = 'block';
+                                } else {
+                                    gentleError.style.display = 'none';
+                                }
+                            });
+                        });
+                        
+                        observer.observe(form, {
+                            childList: true,
+                            subtree: true,
+                            attributes: true,
+                            attributeFilter: ['class']
+                        });
+                        
+                        // Also check on input events
+                        emailInput.addEventListener('input', function() {
+                            setTimeout(function() {
+                                if (emailInput.classList.contains('invalid')) {
+                                    gentleError.style.display = 'block';
+                                } else {
+                                    gentleError.style.display = 'none';
+                                }
+                            }, 100);
+                        });
+                    }
+                }
+            }, 1000);
         });
 
         // Keyboard Navigation
