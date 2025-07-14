@@ -52,14 +52,16 @@
             border: none;
             border-radius: 25px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             margin: 20px auto 30px;
             display: block;
             box-shadow: 0 4px 15px rgba(74, 158, 111, 0.3);
             text-decoration: none;
-            min-width: 280px;
+            width: 100%;
+            max-width: 320px;
+            font-family: inherit;
         }
 
         .hero-cta:hover {
@@ -149,8 +151,17 @@
         .subtitle {
             font-size: 1.2rem;
             color: #999;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             font-weight: 300;
+        }
+
+        .value-subheader {
+            font-size: 1rem;
+            color: #4a9e6f;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            letter-spacing: 0.5px;
+            text-align: center;
         }
 
         .intro-text {
@@ -194,6 +205,11 @@
             min-height: 58px;
             border: 2px solid #4a9e6f;
             border-radius: 29px;
+            border: none;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            display: block;
         }
 
         .continue-btn:hover {
@@ -351,6 +367,7 @@
             transform: translateY(20px);
             min-height: 58px;
             border-radius: 29px;
+            border: none;
         }
 
         .continue-email-btn:hover {
@@ -456,6 +473,7 @@
             margin-top: 1rem;
             text-align: center;
             display: none;
+            border-radius: 12px;
         }
 
         .success-message.show {
@@ -619,6 +637,8 @@
         .page-1 > *:nth-child(4) { animation-delay: 0.4s; }
         .page-1 > *:nth-child(5) { animation-delay: 0.5s; }
         .page-1 > *:nth-child(6) { animation-delay: 0.6s; }
+        .page-1 > *:nth-child(7) { animation-delay: 0.7s; }
+        .page-1 > *:nth-child(8) { animation-delay: 0.8s; }
     </style>
 </head>
 <body>
@@ -631,12 +651,14 @@
             
             <p class="subtitle">The Science-Based Sleep Blueprint for Pregnant Women & New Mothers</p>
             
+            <div class="value-subheader">Evidence-Based Sleep Strategies • Pregnancy-Safe Techniques • Personalized Solutions</div>
+            
             <div class="intro-text">
                 <p>Hi, I'm a board-certified physician, and I'm creating Nest & Rest — a science-backed sleep guide designed to help pregnant women and new moms finally get the deep, restorative sleep they deserve.</p>
                 
                 <p>Whether you're expecting or adjusting to life with a newborn, sleep can feel impossible. That's why I'm building this course <em>with you</em>, not just for you.</p>
                 
-                <p>Backed by 50+ scientific studies, this comprehensive approach gives you proven strategies to significantly improve your sleep quality and wake up feeling more rested.</p>
+                <p>Backed by 50+ scientific studies, this comprehensive approach gives you proven strategies to significantly improve both your sleep duration and quality and wake up feeling more rested.</p>
             </div>
 
             <!-- Hero CTA -->
@@ -649,19 +671,19 @@
                 <div class="benefits-list">
                     <div class="benefit-item">
                         <span class="benefit-icon">✓</span>
-                        <span>Evidence-based sleep hygiene techniques designed for pregnancy & postpartum</span>
+                        <span>Evidence-based sleep techniques proven to improve sleep duration and quality in clinical studies with 600+ pregnant women</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-icon">✓</span>
-                        <span>Proven strategies to calm racing minds and reduce nighttime worry</span>
+                        <span>Proven mindfulness strategies backed by 50+ studies to reduce anxiety and nighttime worry</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-icon">✓</span>
-                        <span>Personalized recommendations based on your specific challenges</span>
+                        <span>Personalized sleep plans designed to help you fall asleep faster and enjoy deeper, more restorative rest</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-icon">✓</span>
-                        <span>Bonus educational content about safe sleep supplements during pregnancy & nursing</span>
+                        <span>Comprehensive educational guide to safe sleep supplements during pregnancy & postpartum</span>
                     </div>
                 </div>
             </div>
