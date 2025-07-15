@@ -480,13 +480,24 @@
             display: block;
         }
 
-        /* ConvertKit Form Styling Overrides */
+        /* ConvertKit Form Styling Overrides - TESTING SUCCESS MESSAGE FIX */
+        /* Temporarily disabled to test success message
         .formkit-form .formkit-alert {
             display: none !important;
         }
 
         .formkit-form .formkit-alert-error {
             display: none !important;
+        }
+        */
+        
+        /* More targeted approach - only hide errors, keep success messages */
+        .formkit-form .formkit-alert-error {
+            display: none !important;
+        }
+        
+        .formkit-form .formkit-alert-success {
+            display: block !important;
         }
 
         .formkit-form .formkit-field.invalid input {
@@ -938,7 +949,7 @@
                         const observer = new MutationObserver(function(mutations) {
                             mutations.forEach(function(mutation) {
                                 // Hide any ConvertKit error alerts
-                                const alerts = form.querySelectorAll('.formkit-alert, .formkit-alert-error');
+                                const alerts = form.querySelectorAll('.formkit-alert-error');
                                 alerts.forEach(alert => {
                                     alert.style.display = 'none';
                                 });
