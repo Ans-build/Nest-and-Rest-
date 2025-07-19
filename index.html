@@ -820,4 +820,32 @@
             if (selectedChallenges.length > 0) {
                 document.getElementById('continueEmailBtn').classList.add('visible');
             } else {
-                document.getElementById('continueEmailBtn').
+                document.getElementById('continueEmailBtn').classList.remove('visible');
+                document.getElementById('emailSection').classList.remove('visible');
+            }
+        }
+
+        function updateSelectionCounter() {
+            const counter = document.getElementById('selectionCounter');
+            if (selectedChallenges.length === 0) {
+                counter.textContent = 'Select at least one challenge to continue';
+                counter.style.color = '#888';
+            } else if (selectedChallenges.length === 1) {
+                counter.textContent = '1 challenge selected';
+                counter.style.color = '#4a9e6f';
+            } else {
+                counter.textContent = `${selectedChallenges.length} challenges selected`;
+                counter.style.color = '#4a9e6f';
+            }
+        }
+
+        function showEmailForm() {
+            document.getElementById('emailSection').classList.add('visible');
+            document.getElementById('emailSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    </script>
+</body>
+</html>
