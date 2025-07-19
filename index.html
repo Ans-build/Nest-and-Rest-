@@ -83,6 +83,29 @@
             text-align: center;
         }
 
+        .fade-segment {
+            opacity: 0;
+            transform: translateY(20px);
+            display: inline;
+        }
+
+        .fade-segment.active {
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .fade-segment:nth-child(1) { animation-delay: 0s; }
+        .fade-segment:nth-child(2) { animation-delay: 0.4s; }
+        .fade-segment:nth-child(3) { animation-delay: 0.8s; }
+        .fade-segment:nth-child(4) { animation-delay: 1.2s; }
+        .fade-segment:nth-child(5) { animation-delay: 1.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .section-icon-header {
             font-size: 3rem;
             text-align: center;
@@ -95,9 +118,9 @@
         .intro-text {
             max-width: 650px;
             margin: 0 auto 3rem;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             line-height: 1.8;
-            color: #c5c5c5;
+            color: #c0c0c0;
             background: rgba(255, 255, 255, 0.03);
             padding: 0.5rem 2rem 2rem 2rem;
             border-radius: 16px;
@@ -163,13 +186,14 @@
             display: grid;
             gap: 15px;
             text-align: left;
+            line-height: 1.8;
         }
 
         .benefit-item {
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             color: #c0c0c0;
         }
 
@@ -560,7 +584,7 @@
             }
 
             .intro-text {
-                font-size: 1.05rem;
+                font-size: 1.2rem;
                 padding: 0.5rem 1.5rem 1.5rem 1.5rem;
                 margin-bottom: 4rem;
             }
@@ -571,7 +595,7 @@
             }
 
             .benefit-item {
-                font-size: 0.9rem;
+                font-size: 1.05rem;
             }
 
             .challenge-question {
@@ -615,7 +639,13 @@
             
             <p class="subtitle">The Science-Based Sleep Blueprint for Pregnant Women & New Mothers</p>
             
-            <div class="value-subheader">Evidence-Based Sleep Strategies • Pregnancy Safe Techniques • Personalized Solutions</div>
+            <div class="value-subheader" id="fadeEffect">
+                <span class="fade-segment">Evidence-Based Sleep Strategies</span>
+                <span class="fade-segment"> • </span>
+                <span class="fade-segment">Pregnancy Safe Techniques</span>
+                <span class="fade-segment"> • </span>
+                <span class="fade-segment">Personalized Solutions</span>
+            </div>
             
             <div class="intro-text">
                 <div class="section-icon-header">🌙</div>
@@ -791,61 +821,4 @@
             document.getElementById('page2').classList.remove('hidden');
             currentPage = 2;
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function autoSelectOther() {
-            const otherCard = document.querySelector('.other-card');
-            const otherText = document.getElementById('otherInput').value.trim();
-            
-            if (otherText.length > 0 && !otherCard.classList.contains('selected')) {
-                selectChallenge(otherCard);
-            } else if (otherText.length === 0 && otherCard.classList.contains('selected')) {
-                selectChallenge(otherCard);
-            }
-        }
-
-        function selectChallenge(card) {
-            const challengeText = card.querySelector('h3').textContent;
-            
-            if (card.classList.contains('selected')) {
-                card.classList.remove('selected');
-                selectedChallenges = selectedChallenges.filter(c => c !== challengeText);
-            } else {
-                card.classList.add('selected');
-                selectedChallenges.push(challengeText);
-            }
-            
-            updateSelectionCounter();
-            
-            if (selectedChallenges.length > 0) {
-                document.getElementById('continueEmailBtn').classList.add('visible');
-            } else {
-                document.getElementById('continueEmailBtn').classList.remove('visible');
-                document.getElementById('emailSection').classList.remove('visible');
-            }
-        }
-
-        function updateSelectionCounter() {
-            const counter = document.getElementById('selectionCounter');
-            if (selectedChallenges.length === 0) {
-                counter.textContent = 'Select at least one challenge to continue';
-                counter.style.color = '#888';
-            } else if (selectedChallenges.length === 1) {
-                counter.textContent = '1 challenge selected';
-                counter.style.color = '#4a9e6f';
-            } else {
-                counter.textContent = `${selectedChallenges.length} challenges selected`;
-                counter.style.color = '#4a9e6f';
-            }
-        }
-
-        function showEmailForm() {
-            document.getElementById('emailSection').classList.add('visible');
-            document.getElementById('emailSection').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    </script>
-</body>
-</html>
+        
