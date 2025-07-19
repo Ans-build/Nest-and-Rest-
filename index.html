@@ -83,24 +83,6 @@
             text-align: center;
         }
 
-        .fade-segment {
-            opacity: 0;
-            transform: translateY(20px);
-            display: inline;
-            transition: all 0.8s ease;
-        }
-
-        .fade-segment.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-segment:nth-child(1).active { transition-delay: 0s; }
-        .fade-segment:nth-child(2).active { transition-delay: 0.4s; }
-        .fade-segment:nth-child(3).active { transition-delay: 0.8s; }
-        .fade-segment:nth-child(4).active { transition-delay: 1.2s; }
-        .fade-segment:nth-child(5).active { transition-delay: 1.6s; }
-
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -120,8 +102,8 @@
         .intro-text {
             max-width: 650px;
             margin: 0 auto 3rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.0rem;
+            line-height: 1.6;
             color: #d8d8d8;
             background: rgba(255, 255, 255, 0.03);
             padding: 1rem 2rem 2rem 2rem;
@@ -195,7 +177,7 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #d8d8d8;
         }
 
@@ -641,13 +623,7 @@
             
             <p class="subtitle">The Science-Based Sleep Blueprint for Pregnant Women & New Mothers</p>
             
-            <div class="value-subheader" id="fadeEffect">
-                <span class="fade-segment">Evidence-Based Sleep Strategies</span>
-                <span class="fade-segment"> • </span>
-                <span class="fade-segment">Pregnancy Safe Techniques</span>
-                <span class="fade-segment"> • </span>
-                <span class="fade-segment">Personalized Solutions</span>
-            </div>
+            <div class="value-subheader">Evidence-Based Sleep Strategies • Pregnancy Safe Techniques • Personalized Solutions</div>
             
             <div class="intro-text">
                 <div class="section-icon-header">🌙</div>
