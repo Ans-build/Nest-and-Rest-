@@ -83,13 +83,6 @@
             text-align: center;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .section-icon-header {
             font-size: 3rem;
             text-align: center;
@@ -168,9 +161,9 @@
 
         .benefits-list {
             display: grid;
-            gap: 15px;
+            gap: 18px;
             text-align: left;
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
         .benefit-item {
@@ -422,31 +415,6 @@
             font-size: 1rem;
         }
 
-        .formkit-form .formkit-alert-error {
-            display: none !important;
-        }
-        
-        .formkit-form .formkit-alert-success {
-            display: block !important;
-        }
-
-        .trust-signals {
-            margin-top: 20px;
-            font-size: 0.85rem;
-            color: #999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .trust-signal {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
         .progress-indicator {
             text-align: center;
             margin-bottom: 30px;
@@ -499,6 +467,23 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 300;
             letter-spacing: 0.5px;
+        }
+
+        .trust-signals {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-signal {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         @media (max-width: 768px) {
@@ -563,23 +548,23 @@
             }
 
             .hero-cta-subtitle {
-                font-size: 0.75rem;
-                margin-bottom: 30px;
+                font-size: 0.8rem;
+                margin-bottom: 1.5rem;
             }
 
             .intro-text {
-                font-size: 1.2rem;
-                padding: 0.5rem 1.5rem 1.5rem 1.5rem;
-                margin-bottom: 4rem;
+                font-size: 0.9rem;
+                padding: 1rem 1.5rem 1.5rem 1.5rem;
+                margin-bottom: 3rem;
             }
 
             .benefits-preview {
-                padding: 0.5rem 20px 25px 20px;
-                margin: 4rem 0;
+                padding: 1rem 20px 25px 20px;
+                margin: 3rem 0;
             }
 
             .benefit-item {
-                font-size: 1.05rem;
+                font-size: 0.8rem;
             }
 
             .challenge-question {
@@ -635,7 +620,7 @@
             </div>
 
             <!-- Hero CTA -->
-            <button class="hero-cta" onclick="goToPage2()">Start My Sleep Assessment</button>
+            <button class="hero-cta" id="startAssessment">Start My Sleep Assessment</button>
             <div class="hero-cta-subtitle">2 minutes • Personalized recommendations</div>
 
             <!-- Benefits Preview -->
@@ -663,7 +648,7 @@
                 
             <h2 class="challenge-question">What's your biggest sleep challenge?</h2>
             
-            <button class="continue-btn" onclick="goToPage2()">Discover My Sleep Solution</button>
+            <button class="continue-btn" id="discoverSolution">Discover My Sleep Solution</button>
             
             <!-- Footer -->
             <div class="footer-text">© 2025 Nest & Rest • Science-Based Sleep Solutions</div>
@@ -672,7 +657,7 @@
 
     <!-- Page 2: Sleep Challenges & Email Capture -->
     <div class="page page-2 hidden" id="page2">
-        <button class="back-btn" onclick="goToPage1()">← Back</button>
+        <button class="back-btn" id="backButton">← Back</button>
         
         <div class="container">
             <!-- Progress Indicator -->
@@ -691,47 +676,47 @@
             </div>
 
             <div class="challenges-grid">
-                <div class="challenge-card" onclick="selectChallenge(this)">
+                <div class="challenge-card" data-challenge="night-wakings">
                     <span class="challenge-icon">🌙</span>
                     <h3>Frequent Night Wakings</h3>
                     <p>Wake up multiple times due to bathroom trips or discomfort, struggle to fall back asleep</p>
                 </div>
                 
-                <div class="challenge-card" onclick="selectChallenge(this)">
+                <div class="challenge-card" data-challenge="physical-discomfort">
                     <span class="challenge-icon">🤰</span>
                     <h3>Physical Discomfort</h3>
                     <p>Back pain, heartburn, restless legs, or baby bump make finding comfortable sleep position impossible</p>
                 </div>
                 
-                <div class="challenge-card" onclick="selectChallenge(this)">
+                <div class="challenge-card" data-challenge="cant-sleep-when-baby-sleeps">
                     <span class="challenge-icon">😴</span>
                     <h3>Can't Sleep When Baby Sleeps</h3>
                     <p>Exhausted but brain won't 'turn off' during naps or when partner takes night duty</p>
                 </div>
                 
-                <div class="challenge-card" onclick="selectChallenge(this)">
+                <div class="challenge-card" data-challenge="postpartum-anxiety">
                     <span class="challenge-icon">😰</span>
                     <h3>Postpartum Anxiety</h3>
                     <p>Constant worry about baby's safety keeps you checking instead of sleeping</p>
                 </div>
                 
-                <div class="challenge-card" onclick="selectChallenge(this)">
+                <div class="challenge-card" data-challenge="never-feel-rested">
                     <span class="challenge-icon">🔋</span>
                     <h3>Never Feel Rested</h3>
                     <p>Wake up exhausted and foggy even after hours of sleep</p>
                 </div>
                 
-                <div class="challenge-card" onclick="selectChallenge(this)">
+                <div class="challenge-card" data-challenge="racing-mind">
                     <span class="challenge-icon">🧠</span>
                     <h3>Racing Mind at Bedtime</h3>
                     <p>Mind races with worries about baby, parenting, or health when trying to sleep</p>
                 </div>
                 
-                <div class="challenge-card other-card" onclick="selectChallenge(this)">
+                <div class="challenge-card other-card" data-challenge="other">
                     <span class="challenge-icon">💭</span>
                     <h3>Other Sleep Challenge</h3>
                     <p>I have a different sleep challenge not listed above</p>
-                    <textarea class="other-input" id="otherInput" placeholder="Please describe your specific sleep challenge... (optional)" onclick="event.stopPropagation()" oninput="autoSelectOther()"></textarea>
+                    <textarea class="other-input" id="otherInput" placeholder="Please describe your specific sleep challenge... (optional)"></textarea>
                 </div>
             </div>
 
@@ -739,7 +724,7 @@
                 Select at least one challenge to continue
             </div>
 
-            <button class="continue-email-btn" id="continueEmailBtn" onclick="showEmailForm()">Get My FREE Sleep Blueprint</button>
+            <button class="continue-email-btn" id="continueEmailBtn">Get My FREE Sleep Blueprint</button>
 
             <div class="email-section" id="emailSection">
                 <!-- Progress Indicator -->
@@ -784,19 +769,104 @@
     </div>
 
     <script>
+        // Initialize variables
         let selectedChallenges = [];
-        let currentPage = 1;
-
-        function goToPage1() {
+        
+        // Page navigation functions
+        function showPage1() {
             document.getElementById('page1').classList.remove('hidden');
             document.getElementById('page2').classList.add('hidden');
-            currentPage = 1;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        function goToPage2() {
+        
+        function showPage2() {
             document.getElementById('page1').classList.add('hidden');
             document.getElementById('page2').classList.remove('hidden');
-            currentPage = 2;
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         
+        // Challenge selection function
+        function selectChallenge(card) {
+            const challengeData = card.getAttribute('data-challenge');
+            
+            if (card.classList.contains('selected')) {
+                card.classList.remove('selected');
+                selectedChallenges = selectedChallenges.filter(c => c !== challengeData);
+            } else {
+                card.classList.add('selected');
+                selectedChallenges.push(challengeData);
+            }
+            
+            updateSelectionCounter();
+            
+            if (selectedChallenges.length > 0) {
+                document.getElementById('continueEmailBtn').classList.add('visible');
+            } else {
+                document.getElementById('continueEmailBtn').classList.remove('visible');
+                document.getElementById('emailSection').classList.remove('visible');
+            }
+        }
+        
+        // Update selection counter
+        function updateSelectionCounter() {
+            const counter = document.getElementById('selectionCounter');
+            if (selectedChallenges.length === 0) {
+                counter.textContent = 'Select at least one challenge to continue';
+                counter.style.color = '#888';
+            } else if (selectedChallenges.length === 1) {
+                counter.textContent = '1 challenge selected';
+                counter.style.color = '#4a9e6f';
+            } else {
+                counter.textContent = `${selectedChallenges.length} challenges selected`;
+                counter.style.color = '#4a9e6f';
+            }
+        }
+        
+        // Show email form
+        function showEmailForm() {
+            document.getElementById('emailSection').classList.add('visible');
+            document.getElementById('emailSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // Auto-select other challenge when typing
+        function autoSelectOther() {
+            const otherCard = document.querySelector('[data-challenge="other"]');
+            const otherText = document.getElementById('otherInput').value.trim();
+            
+            if (otherText.length > 0 && !otherCard.classList.contains('selected')) {
+                selectChallenge(otherCard);
+            } else if (otherText.length === 0 && otherCard.classList.contains('selected')) {
+                selectChallenge(otherCard);
+            }
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation buttons
+            document.getElementById('startAssessment').addEventListener('click', showPage2);
+            document.getElementById('discoverSolution').addEventListener('click', showPage2);
+            document.getElementById('backButton').addEventListener('click', showPage1);
+            
+            // Challenge cards
+            document.querySelectorAll('.challenge-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on textarea
+                    if (e.target.classList.contains('other-input')) {
+                        return;
+                    }
+                    selectChallenge(this);
+                });
+            });
+            
+            // Other input
+            document.getElementById('otherInput').addEventListener('input', autoSelectOther);
+            
+            // Email button
+            document.getElementById('continueEmailBtn').addEventListener('click', showEmailForm);
+        });
+    </script>
+</body>
+</html>
